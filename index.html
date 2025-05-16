@@ -1,11 +1,121 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <link rel="stylesheet" href="style.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | E-Team</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #2f4d73;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding-bottom: 80px; /* untuk jarak dari call-admin */
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .robot-icon {
+      width: 100px;
+      margin-bottom: 16px;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      margin-top: 4px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 12px;
+      border: none;
+      background-color: #facc15; /* kuning */
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .register-link a {
+      color: #2f4d73;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .settings-icon {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .call-admin {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .call-admin img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .call-admin span {
+      font-weight: bold;
+      color: #2f4d73;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="login-container">
@@ -28,19 +138,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" />
     <span>CALL ADMIN</span>
   </div>
-  <script>
-  document.querySelectorAll('.item').forEach(item => {
-    item.addEventListener('mouseenter', e => {
-      const spark = document.createElement('span');
-      spark.className = 'spark';
-      const rect = item.getBoundingClientRect();
-      spark.style.left = (e.clientX - rect.left) + 'px';
-      spark.style.top = (e.clientY - rect.top) + 'px';
-      item.appendChild(spark);
-      setTimeout(() => spark.remove(), 600);
-    });
-  });
-</script>
-<script src="sparkle.js"></script>
+
+  <script src="sparkle.js"></script>
 </body>
 </html>

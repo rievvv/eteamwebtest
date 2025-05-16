@@ -1,51 +1,55 @@
-body {
-  margin: 0;
-  background-color: #fef0cc;
-  font-family: 'Poppins', sans-serif;
+/* Reset dan dasar */
+* {
+  box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #2f4d73;
+}
 
+/* Judul umum */
+h1, .judul-avatar {
+  text-align: center;
+  color: #ffd957;
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+/* Container Login */
 .login-container {
-  width: 320px;
+  width: 90%;
+  max-width: 350px;
   background-color: #2f4d73;
   border-radius: 30px;
   margin: 50px auto;
-  padding: 30px;
+  padding: 30px 20px;
   text-align: center;
   color: #fef0cc;
   position: relative;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Efek shadow ditambahkan */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Logo robot */
 .robot-icon {
   width: 110px;
   margin-bottom: 20px;
 }
 
+/* Label input */
 label {
   display: block;
   margin-top: 10px;
   font-size: 12px;
-  font-weight: 700; /* Poppins Bold */
+  font-weight: 700;
   color: #fef0cc;
 }
 
-.register-link {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: 300; /* Poppins Light */
-  color: #ffd957;
-}
-
-.register-link a {
-  color: #ffd957;
-  font-weight: 600; /* Poppins Semi Bold */
-  font-style: italic;
-  text-decoration: none;
-}
-
+/* Input */
 input {
-  width: 90%;
+  width: 100%;
   padding: 10px;
   margin: 5px 0 15px 0;
   border: none;
@@ -53,6 +57,7 @@ input {
   background-color: #f7f5f5;
 }
 
+/* Tombol login */
 button {
   background-color: #ffd957;
   color: #2f4d73;
@@ -63,92 +68,22 @@ button {
   cursor: pointer;
 }
 
+/* Link daftar */
 .register-link {
   margin-top: 15px;
-  font-size: 11px;
+  font-size: 12px;
   color: #ffd957;
+  font-weight: 300;
 }
 
 .register-link a {
   color: #ffd957;
-  font-weight: bold;
+  font-weight: 600;
+  font-style: italic;
   text-decoration: none;
 }
 
-/* Kontainer Grid */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 16px;
-  padding: 20px;
-}
-
-/* Setiap Kartu */
-.card {
-  background-color: white;
-  border-radius: 16px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Gambar dalam kartu */
-.card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Teks Daftar */
-.card p {
-  margin: 10px 0;
-  font-weight: 500;
-  font-size: 14px;
-  color: #1e1e1e;
-}
-
-.item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer; /* buat mouse berubah saat hover */
-  height: 250px;
-  padding: 20px;
-}
-
-.item img {
-  width: 100%;
-  aspect-ratio: 1/1;
-}
-
-.item p {
-  margin-top: 10px;
-  text-align: center;
-}
-
-
-.item:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
-}
-
-.item:active {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
-}
-.item img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.item img:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
-}
-
-.item img:active {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
-}
-
+/* Pengaturan ikon */
 .settings-icon {
   position: absolute;
   bottom: 20px;
@@ -157,6 +92,7 @@ button {
   color: white;
 }
 
+/* Panggil admin */
 .call-admin {
   position: fixed;
   bottom: 20px;
@@ -173,24 +109,63 @@ button {
   margin-right: 8px;
 }
 
-.item input[type="file"] {
-  display: none;
+/* Grid avatar */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.item label {
-  display: block;
+/* Kartu item */
+.item {
+  background-color: white;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  overflow: hidden;
+  padding: 10px;
 }
 
+.item:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.item:active {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Gambar dalam item */
 .item img {
-  width: 140px;
-  height: 140px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 16px;
   display: block;
-  margin: 0 auto 10px auto;
-  transition: transform 0.3s ease;
+  margin: 0 auto 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.item p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2f4d73;
+  margin: 0;
+}
+
+/* Hover animasi gambar */
+.item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Efek sparkle */
 .global-spark {
   position: absolute;
   width: 12px;
@@ -212,6 +187,8 @@ button {
     transform: scale(4);
   }
 }
+
+/* Popup */
 .popup {
   display: none;
   position: fixed;
@@ -221,7 +198,7 @@ button {
   background: #ffffff;
   padding: 40px 20px 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   z-index: 9999;
   text-align: center;
   width: 300px;
@@ -237,7 +214,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .popup-circle span {
@@ -253,13 +230,16 @@ button {
   font-weight: 600;
 }
 
+/* Responsive form */
 @media (max-width: 600px) {
+  .login-container,
   .form-container {
+    width: 90%;
     padding: 20px;
-    max-width: 90%;
   }
 
-  input, select {
+  input,
+  select {
     width: 100%;
   }
 
@@ -267,12 +247,8 @@ button {
     width: 100%;
     margin-bottom: 10px;
   }
-}
 
-.card img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 20px;
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
