@@ -75,12 +75,37 @@ button {
   text-decoration: none;
 }
 
+/* Kontainer Grid */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
+  gap: 16px;
+  padding: 20px;
 }
 
+/* Setiap Kartu */
+.card {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Gambar dalam kartu */
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Teks Daftar */
+.card p {
+  margin: 10px 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1e1e1e;
+}
 
 .item {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
