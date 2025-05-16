@@ -11,14 +11,12 @@
       font-family: 'Poppins', sans-serif;
       background-color: #2f4d73;
       padding: 20px;
-      margin: 0;
       overflow-x: hidden;
     }
 
     .form-container {
       background-color: #fff;
       max-width: 500px;
-      width: 100%;
       margin: auto;
       padding: 30px;
       border-radius: 20px;
@@ -34,7 +32,7 @@
     }
 
     .form-group {
-      margin-bottom: 10px;
+      margin-bottom: 3px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -74,7 +72,6 @@
     .half-upload {
       width: 40%;
       display: inline-block;
-      margin-bottom: 10px;
     }
 
     .submit-btn {
@@ -107,34 +104,23 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 40px 20px 20px;
-      border-radius: 15px;
+      background: #2196f3;
+      padding: 30px;
+      border-radius: 50%;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       z-index: 9999;
       text-align: center;
     }
 
-    .popup .circle {
-      background: #2196f3;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      margin: -60px auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .popup .circle span {
-      font-size: 32px;
-      color: #ffcc00;
+    .popup span {
+      font-size: 36px;
+      color: #000;
+      display: block;
     }
 
     .popup p {
       margin-top: 10px;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 14px;
       color: #000;
     }
 
@@ -145,20 +131,6 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-    }
-
-    @media (max-width: 600px) {
-      .form-container {
-        max-width: 95%;
-        padding: 20px;
-      }
-      input[type="text"], input[type="number"], input[type="file"], select {
-        width: 100%;
-      }
-      .half-upload {
-        width: 100%;
-        margin-bottom: 10px;
-      }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -221,15 +193,15 @@
         <input type="text" id="infoTambahan" name="infoTambahan" placeholder="" readonly>
         <div class="note" id="noteTambahan"></div>
       </div>
-
       <button type="submit" class="submit-btn">Daftar</button>
     </form>
   </div>
-
   <div class="popup" id="popupBerhasil">
-    <div class="circle"><span>✔</span></div>
-    <p>Pendaftaran Telah Berhasil</p>
+  <div class="popup-circle">
+    <span>✔</span>
   </div>
+  <p class="popup-text">Pendaftaran Telah Berhasil</p>
+</div>
 
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
@@ -260,6 +232,7 @@
     document.getElementById("daftarForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
+      // VALIDASI FORM DISINI JIKA PERLU SEBELUM KIRIM KE SPREADSHEET
       const popup = document.getElementById("popupBerhasil");
       popup.style.display = "block";
 
@@ -268,7 +241,7 @@
         document.getElementById("daftarForm").reset();
       }, 2500);
 
-      // Integrasi ke spreadsheet dilakukan di sini
+      // KIRIM DATA KE SPREADSHEET (HARUS DENGAN SCRIPT TAMBAHAN DI BACKEND ATAU APP SCRIPT)
     });
   </script>
 </body>
