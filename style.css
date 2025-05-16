@@ -77,11 +77,10 @@ button {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* fix 3 kolom */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
-  max-width: 900px;
-  margin: auto;
 }
+
 
 .item {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -243,4 +242,12 @@ button {
     width: 100%;
     margin-bottom: 10px;
   }
+}
+
+.card img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
 }
