@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -9,21 +5,13 @@ body {
   background-color: #2f4d73;
 }
 
-/* Judul halaman */
-h1 {
-  text-align: center;
-  color: #ffcc00;
-  font-size: 22px;
-  margin-top: 20px;
-}
-
-/* Login box */
 .login-container {
   width: 320px;
+  max-width: 90%;
   background-color: #2f4d73;
   border-radius: 30px;
   margin: 50px auto;
-  padding: 30px;
+  padding: 30px 20px;
   text-align: center;
   color: #fef0cc;
   position: relative;
@@ -31,30 +19,31 @@ h1 {
 }
 
 .robot-icon {
-  width: 110px;
-  margin-bottom: 20px;
+  width: 100px;
+  margin: 0 auto 20px;
+  display: block;
 }
 
-/* Form labels */
 label {
   display: block;
   margin-top: 10px;
   font-size: 12px;
   font-weight: 700;
   color: #fef0cc;
+  text-align: left;
+  margin-left: 5%;
 }
 
-/* Input box */
 input {
   width: 90%;
   padding: 10px;
-  margin: 5px 0 15px 0;
+  margin: 5px 0 15px;
   border: none;
   border-radius: 20px;
   background-color: #f7f5f5;
+  font-size: 14px;
 }
 
-/* Button login */
 button {
   background-color: #ffd957;
   color: #2f4d73;
@@ -65,7 +54,6 @@ button {
   cursor: pointer;
 }
 
-/* Link daftar */
 .register-link {
   margin-top: 15px;
   font-size: 11px;
@@ -79,54 +67,36 @@ button {
   font-style: italic;
 }
 
-/* Grid avatar pendaftaran */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 16px;
-  padding: 20px;
+.settings-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: white;
 }
 
-.item {
-  background-color: white;
-  border-radius: 16px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  padding: 10px;
-}
-
-.item img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-  margin: 0 auto 10px auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.item p {
-  margin-top: 10px;
-  text-align: center;
+.call-admin {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  font-weight: 500;
   color: #2f4d73;
+  font-weight: bold;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-.item:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+.call-admin img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
-.item:active {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
-}
-
-/* Sparkle effect */
 .global-spark {
   position: absolute;
   width: 12px;
@@ -149,64 +119,27 @@ button {
   }
 }
 
-/* Popup notifikasi */
-.popup {
-  display: none;
+.sparkle {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffffff;
-  padding: 40px 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  z-index: 9999;
-  text-align: center;
-  width: 300px;
-}
-
-.popup-circle {
-  background-color: #2196f3;
-  width: 60px;
-  height: 60px;
+  width: 4px;
+  height: 4px;
+  background-color: hsl(var(--hue), 100%, 60%);
   border-radius: 50%;
-  margin: -60px auto 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+  animation: sparkle-animation 0.5s ease-out forwards;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
 }
 
-.popup-circle span {
-  font-size: 28px;
-  color: #ffcc00;
-  font-weight: bold;
-}
-
-.popup-text {
-  margin: 0;
-  font-size: 16px;
-  color: #2f4d73;
-  font-weight: 600;
-}
-
-/* Responsive form */
-@media (max-width: 600px) {
-  .login-container {
-    width: 90%;
-    padding: 20px;
+@keyframes sparkle-animation {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
+    opacity: 1;
   }
-
-  input, select {
-    width: 100%;
-  }
-
-  .half-upload {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
+  100% {
+    transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.5);
+    opacity: 0;
   }
 }
+
