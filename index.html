@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | E-Team</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <img src="LOGO E-TEAM (Transparant).png" alt="Robot Icon" class="robot-icon" />
+    <form>
+      <label for="userid">USER ID</label>
+      <input type="text" id="userid" name="userid" required />
+
+      <label for="password">PASSWORD</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">MASUK</button>
+
+      <p class="register-link">TIDAK MEMILIKI AKUN?<br><a href="register.html">DAFTAR DISINI</a></p>
+    </form>
+    <div class="settings-icon">⚙️</div>
+  </div>
+
+  <div class="call-admin">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" />
+    <span>CALL ADMIN</span>
+  </div>
+  <script>
+  document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('mouseenter', e => {
+      const spark = document.createElement('span');
+      spark.className = 'spark';
+      const rect = item.getBoundingClientRect();
+      spark.style.left = (e.clientX - rect.left) + 'px';
+      spark.style.top = (e.clientY - rect.top) + 'px';
+      item.appendChild(spark);
+      setTimeout(() => spark.remove(), 600);
+    });
+  });
+</script>
+<script src="sparkle.js"></script>
+</body>
+</html>

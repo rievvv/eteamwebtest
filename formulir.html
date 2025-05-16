@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pendaftaran</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #2f4d73;
+      padding: 20px;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .form-container {
+      background-color: #fff;
+      max-width: 500px;
+      width: 100%;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .form-container h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #2f4d73;
+      text-align: center;
+      width: 100%;
+      opacity: 0.7;
+    }
+
+    input[type="text"], input[type="number"], input[type="file"], select {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    input::placeholder, select::placeholder {
+      opacity: 0.5;
+    }
+
+    input[readonly] {
+      background-color: #e0e0e0;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #ffcc00;
+      margin-top: 4px;
+    }
+
+    .half-upload {
+      width: 40%;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .submit-btn {
+      background-color: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #ffcc00;
+      background: none;
+      padding: 0;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 40px 20px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      z-index: 9999;
+      text-align: center;
+    }
+
+    .popup .circle {
+      background: #2196f3;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      margin: -60px auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup .circle span {
+      font-size: 32px;
+      color: #ffcc00;
+    }
+
+    .popup p {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        max-width: 95%;
+        padding: 20px;
+      }
+      input[type="text"], input[type="number"], input[type="file"], select {
+        width: 100%;
+      }
+      .half-upload {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+<div id="particles-js"></div>
+  <button class="back-btn" onclick="window.location.href='register.html'">← Kembali</button>
+  <div class="form-container">
+    <h2>Form Pendaftaran</h2>
+    <form id="daftarForm">
+      <div class="form-group">
+        <label for="micoId">ID Mico</label>
+        <input type="text" id="micoId" name="micoId" placeholder="Masukkan ID Mico">
+      </div>
+
+      <div class="form-group">
+        <label for="nama">Nama Lengkap Sesuai KTP*</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+      </div>
+
+      <div class="form-group">
+        <label for="wa">Nomor WhatsApp*</label>
+        <input type="text" id="wa" name="wa" placeholder="08xxxxxxxxxx" required>
+      </div>
+
+      <div class="form-group">
+        <label for="nik">NIK*</label>
+        <input type="number" id="nik" name="nik" placeholder="Masukkan NIK" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ktp">Foto KTP atau SIM*</label>
+        <input type="file" id="ktp" name="ktp" required>
+      </div>
+
+      <div class="form-group">
+        <label>2 Foto Terbaik*</label>
+        <input type="file" name="foto1" class="half-upload" required>
+        <input type="file" name="foto2" class="half-upload" required>
+      </div>
+
+      <div class="form-group">
+        <label for="video">Upload Video Perkenalan*</label>
+        <input type="file" id="video" name="video" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rekomendasi">Rekomendasi (Opsional)</label>
+        <input type="text" id="rekomendasi" name="rekomendasi" placeholder="Masukkan nama yang merekomendasikan">
+      </div>
+
+      <div class="form-group">
+        <label for="kategori">Kategori*</label>
+        <select id="kategori" name="kategori" required>
+          <option value="New Talent">New Talent</option>
+          <option value="Hi-Q New Talent">Hi-Q New Talent</option>
+          <option value="Existing Talent">Existing Talent</option>
+          <option value="Perpindahan">Perpindahan</option>
+        </select>
+        <input type="text" id="infoTambahan" name="infoTambahan" placeholder="" readonly>
+        <div class="note" id="noteTambahan"></div>
+      </div>
+
+      <button type="submit" class="submit-btn">Daftar</button>
+    </form>
+  </div>
+
+  <div class="popup" id="popupBerhasil">
+    <div class="circle"><span>✔</span></div>
+    <p>Pendaftaran Telah Berhasil</p>
+  </div>
+
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function() {
+      console.log('particles.js loaded');
+    });
+
+    const kategori = document.getElementById("kategori");
+    const infoTambahan = document.getElementById("infoTambahan");
+    const noteTambahan = document.getElementById("noteTambahan");
+
+    kategori.addEventListener("change", () => {
+      const val = kategori.value;
+      if (val === "Hi-Q New Talent") {
+        infoTambahan.readOnly = false;
+        infoTambahan.value = "Silahkan masukan link Instagram atau Tiktok";
+        noteTambahan.textContent = "Minimal follower Instagram atau Tiktok 2k followers";
+      } else if (val === "Perpindahan") {
+        infoTambahan.readOnly = false;
+        infoTambahan.value = "Silahkan masukan nama agency sebelumnya";
+        noteTambahan.textContent = "";
+      } else {
+        infoTambahan.readOnly = true;
+        infoTambahan.value = "";
+        noteTambahan.textContent = "";
+      }
+    });
+
+    document.getElementById("daftarForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const popup = document.getElementById("popupBerhasil");
+      popup.style.display = "block";
+
+      setTimeout(() => {
+        popup.style.display = "none";
+        document.getElementById("daftarForm").reset();
+      }, 2500);
+
+      // Integrasi ke spreadsheet dilakukan di sini
+    });
+  </script>
+</body>
+</html>

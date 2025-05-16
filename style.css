@@ -1,0 +1,246 @@
+body {
+  margin: 0;
+  background-color: #fef0cc;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.login-container {
+  width: 320px;
+  background-color: #2f4d73;
+  border-radius: 30px;
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+  color: #fef0cc;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Efek shadow ditambahkan */
+}
+
+.robot-icon {
+  width: 110px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700; /* Poppins Bold */
+  color: #fef0cc;
+}
+
+.register-link {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 300; /* Poppins Light */
+  color: #ffd957;
+}
+
+.register-link a {
+  color: #ffd957;
+  font-weight: 600; /* Poppins Semi Bold */
+  font-style: italic;
+  text-decoration: none;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0 15px 0;
+  border: none;
+  border-radius: 20px;
+  background-color: #f7f5f5;
+}
+
+button {
+  background-color: #ffd957;
+  color: #2f4d73;
+  font-weight: bold;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.register-link {
+  margin-top: 15px;
+  font-size: 11px;
+  color: #ffd957;
+}
+
+.register-link a {
+  color: #ffd957;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* fix 3 kolom */
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* buat mouse berubah saat hover */
+  height: 250px;
+  padding: 20px;
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.item p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.item:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.item:active {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
+}
+.item img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.item img:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.item img:active {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.18);
+}
+
+.settings-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: white;
+}
+
+.call-admin {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #2f4d73;
+  font-weight: bold;
+}
+
+.call-admin img {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.item input[type="file"] {
+  display: none;
+}
+
+.item label {
+  display: block;
+  cursor: pointer;
+}
+
+.item img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 10px auto;
+  transition: transform 0.3s ease;
+}
+.global-spark {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #ffcf33 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: global-sparkle 0.6s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes global-sparkle {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(4);
+  }
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 40px 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 9999;
+  text-align: center;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+.popup-circle {
+  background-color: #2196f3;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: -60px auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.popup-circle span {
+  font-size: 28px;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.popup-text {
+  margin: 0;
+  font-size: 16px;
+  color: #2f4d73;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  input, select {
+    width: 100%;
+  }
+
+  .half-upload {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
