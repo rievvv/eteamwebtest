@@ -15,6 +15,7 @@
     }
 
     .form-container {
+      width: 500px;
       background-color: #fff;
       max-width: 500px;
       margin: auto;
@@ -39,7 +40,7 @@
     }
 
     label {
-      margin-bottom: 5px;
+      margin-bottom: 3px;
       font-weight: 500;
       color: #2f4d73;
       text-align: center;
@@ -193,16 +194,10 @@
         <input type="text" id="infoTambahan" name="infoTambahan" placeholder="" readonly>
         <div class="note" id="noteTambahan"></div>
       </div>
-      <button type="submit" class="submit-btn">Daftar</button>
+      <button onclick="showSuccessBar()">Daftar</button>
     </form>
   </div>
   <div class="popup" id="popupBerhasil">
-  <div class="popup-circle">
-    <span>✔</span>
-  </div>
-  <p class="popup-text">Pendaftaran Telah Berhasil</p>
-</div>
-
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('particles.js loaded');
@@ -244,5 +239,27 @@
       // KIRIM DATA KE SPREADSHEET (HARUS DENGAN SCRIPT TAMBAHAN DI BACKEND ATAU APP SCRIPT)
     });
   </script>
+  <script>
+  function showSuccessBar() {
+    const bar = document.getElementById("successBar");
+    bar.style.display = "flex";
+
+    setTimeout(() => {
+      bar.style.display = "none";
+    }, 4000); // hilang otomatis dalam 4 detik
+  }
+</script>
+
+<!-- Notifikasi sukses -->
+<div id="successBar" class="success-bar">
+  <div class="success-circle">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#2196f3" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+  </div>
+  <div class="success-message">
+    Yeay, Kamu sudah berhasil mendaftar,<br />Admin akan segera menghubungimu
+  </div>
+</div>
 </body>
 </html>

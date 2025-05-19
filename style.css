@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #2f4d73;
+  background-color: #96b3d8;
 }
 
 .login-container {
@@ -10,7 +10,7 @@ body {
   max-width: 90%;
   background-color: #2f4d73;
   border-radius: 30px;
-  margin: 50px auto;
+  margin: 95px auto;
   padding: 30px 20px;
   text-align: center;
   color: #fef0cc;
@@ -146,9 +146,9 @@ button {
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: #2f4d73;
+  color: #ffd957;
   font-weight: bold;
-  background: #ffd957;
+  background: #2f4d73;
   padding: 8px 12px;
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -178,7 +178,6 @@ button {
     margin-right: 6px;
   }
 }
-
 
 .global-spark {
   position: absolute;
@@ -247,4 +246,256 @@ button {
   object-fit: contain; /* agar seluruh gambar terlihat dan tidak terpotong */
   display: block;
   margin: 0 auto;
+}
+
+/* POP UP */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px 25px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.popup-circle {
+  background-color: #ffd957;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: -60px auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.popup-circle span {
+  font-size: 28px;
+  color: #2f4d73;
+  font-weight: bold;
+}
+
+.popup-text {
+  font-size: 15px;
+  color: #2f4d73;
+  font-weight: 600;
+  margin: 0;
+}
+
+.success-bar {
+  display: none;
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #2f4d73;
+  padding: 14px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  animation: fadeInDown 0.4s ease;
+  max-width: 90%;
+  text-align: left;
+}
+
+.success-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffd957;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-message {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* MENU LOGIN */
+.back-button {
+  display: inline-block;
+  margin: 1rem;
+  font-weight: bold;
+  color: #2b4372;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.back-button:hover {
+  color: #ffd700;
+}
+
+.floating-button {
+  background-color: #2b4372;
+  color: #ffd700;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.floating-button img {
+  vertical-align: middle;
+}
+
+.call-admin-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #2b4372;
+  color: #ffd700;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.call-admin-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.logo-robot {
+  height: 90px; /* Ubah ukurannya di sini */
+  margin-left: -1rem;
+  margin-top: 0.5rem;
+}
+
+/* Ubah ukuran Sliding Banner */
+.banner-img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* sliding banner */
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.slider {
+  display: flex;
+  width: 300%; /* 100% x jumlah gambar */
+  transition: transform 4s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 300px; /* kamu bisa atur tinggi sesuai kebutuhan */
+  overflow: hidden;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(43, 67, 114, 0.7);
+  color: yellow;
+  border: none;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 2;
+}
+
+.nav-button.prev { left: 10px; }
+.nav-button.next { right: 10px; }
+
+/* Carrousel Sliding Banner */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 300px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.3);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
 }
