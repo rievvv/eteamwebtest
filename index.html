@@ -117,6 +117,36 @@
       padding: 0.5rem 1rem;
       border-radius: 20px;
     }
+    /* Responsive untuk layar kecil (smartphone) */
+@media (max-width: 600px) {
+  .nav {
+    justify-content: center;  /* Biar menu di tengah */
+    flex-wrap: wrap;          /* Kalau gak muat, pindah ke baris baru */
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .logo {
+    position: static;         /* Supaya logo ikut alur normal */
+    margin-bottom: 0.5rem;
+    width: 100px;
+  }
+  .menu-item {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .slider-container {
+    height: 250px;            /* Slider lebih pendek di HP */
+  }
+  .nav-arrow {
+    font-size: 1.5rem;        /* Tombol panah lebih kecil */
+  }
+  .call-admin {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}
   </style>
 </head>
 <body>
