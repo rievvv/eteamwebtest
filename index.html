@@ -117,23 +117,67 @@
       padding: 0.5rem 1rem;
       border-radius: 20px;
     }
-    /* Responsive untuk layar kecil (smartphone) */
-@media (max-width: 600px) {
+    /* Hide hamburger menu icon by default */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  width: 25px;
+  height: 20px;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.hamburger div {
+  height: 3px;
+  background-color: #324d73; /* biru */
+  border-radius: 2px;
+}
+/* Responsive untuk smartphone */
+@media (max-width: 768px) {
   .nav {
-    justify-content: center;  /* Biar menu di tengah */
-    flex-wrap: wrap;          /* Kalau gak muat, pindah ke baris baru */
-    gap: 1rem;
-    padding: 0.5rem 1rem;
+    justify-content: flex-start;
+    padding: 1rem;
+    position: relative;
   }
+
   .logo {
-    position: static;         /* Supaya logo ikut alur normal */
-    margin-bottom: 0.5rem;
+    position: static;
     width: 100px;
+    margin-right: 1rem;
   }
+
+  /* Sembunyikan menu-item di nav secara default */
   .menu-item {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.5rem;
+    display: none;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #324d73; /* default teks biru */
   }
+
+  /* Tampilkan menu-item saat nav aktif (class .nav.active) */
+  .nav.active .menu-item {
+    display: block;
+    background-color: transparent;
+  }
+
+  /* Hover dan active menu-item style */
+  .menu-item:hover,
+  .menu-item.active {
+    background-color: #324d73; /* biru */
+    color: #fec30c !important; /* kuning */
+  }
+
+  /* Tampilkan hamburger icon */
+  .hamburger {
+    display: flex;
+  }
+}
+
   .slider-container {
     height: 250px;            /* Slider lebih pendek di HP */
   }
@@ -146,12 +190,18 @@
     bottom: 0.5rem;
     right: 0.5rem;
   }
-}
+
   </style>
 </head>
 <body>
   <div class="nav">
     <img class="logo" src="LOGO E-TEAM (Transparant + Text).png" alt="E-Team Logo">
+    <div class="hamburger" id="hamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
     <div class="menu-item active" onclick="setActive(this)">Home</div>
     <div class="menu-item" onclick="setActive(this)">Top Up</div>
     <div class="menu-item" onclick="setActive(this)">Service</div>
@@ -249,6 +299,24 @@
 };
 
     loopSlides();
+    const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('.nav');
+const menuItems = document.querySelectorAll('.menu-item');
+
+hamburger.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
+// Supaya saat klik menu-item di mobile, menu otomatis tutup dan aktifkan highlight
+menuItems.forEach(item => {
+  item.addEventListener('click', () => {
+    menuItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    if(window.innerWidth <= 768) {
+      nav.classList.remove('active'); // tutup menu setelah klik di mobile
+    }
+  });
+});
   </script>
 </body>
 </html>
