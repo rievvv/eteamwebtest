@@ -1,174 +1,224 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Team - Home</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #fceec8;
+      background-color: #feeeca;
     }
-
-    header {
+    .nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
-
-    .nav-menu {
-      display: flex;
+      justify-content: flex-end;
       gap: 2rem;
       align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
     }
-
-    .nav-menu a {
-      text-decoration: none;
+    .logo {
+      position: absolute;
+      left: 0.5rem;
+      top: -1.5rem;
+      width: 120px;
+    }
+    .menu-item {
+      position: relative;
+      padding: 0.5rem 0;
       font-weight: 600;
-      color: #000;
+      color: black;
+      cursor: pointer;
     }
-
-    .nav-menu a.active {
-      background-color: #2b4372;
-      color: #ffd700;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem 1rem 0 0;
+    .menu-item.active {
+      color: #fec30c;
+    }
+    .menu-item.active::after {
+      content: "";
+      position: absolute;
+      bottom: -0.3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #324d73;
+      width: 150%;
+      height: 10rem;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: -1;
     }
     .slider-container {
-  width: 100%;
-  height: 250px; /* atau sesuaikan dengan kebutuhan */
-  overflow: hidden;
-  position: relative;
-}
-
-.slider {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease;
-}
-
-.slide {
-  flex-shrink: 0;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-    .banner-img {
+      position: relative;
       width: 100%;
+      height: 400px;
+      background-color: #fec30c;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-
-    @keyframes slide {
-      0%, 33% { transform: translateX(0); }
-      34%, 66% { transform: translateX(-100vw); }
-      67%, 100% { transform: translateX(-200vw); }
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #324d73;
+      cursor: pointer;
+      z-index: 1;
     }
-    
-
-    .floating-button {
+    .nav-left {
+      left: 1rem;
+    }
+    .nav-right {
+      right: 1rem;
+    }
+    .dots {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: gray;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    .dot.active {
+      background-color: #324d73;
+      opacity: 0.9;
+    }
+    .call-admin {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background-color: #2b4372;
-      color: #ffd700;
-      padding: 0.75rem 1rem;
-      border-radius: 2rem;
+      bottom: 1rem;
+      right: 1rem;
+      background-color: #324d73;
+      color: #fec30c;
+      font-weight: bold;
+      font-size: 1rem;
       display: flex;
       align-items: center;
-      font-weight: bold;
+      gap: 0.5rem;
       text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      z-index: 999;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
     }
-
-    .floating-button i {
-      font-size: 1,2rem;
-      vertical-align: middle;
-    }
-    
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-  <img src="LOGO E-TEAM (Transparant).png" alt="Logo Robot" class="logo-robot" />
-  <!-- nav menu atau lainnya -->
-    <nav class="nav-menu">
-      <a href="#" class="active">Home</a>
-      <a href="#">Top Up</a>
-      <a href="#">Service</a>
-      <a href="#">About Us</a>
-      <a href="login.html">Masuk</a>
-    </nav>
-  </header>
-
-  <div class="carousel-container">
-  <div class="carousel-track" id="carousel-track">
-    <div class="carousel-slide">
-      <img src="Mico.png" alt="Banner 1" />
-    </div>
-    <div class="carousel-slide" id="carousel-track">
-      <img src="Tiktok.jpg" alt="Banner 2" />
-    </div>
-    <div class="carousel-slide" id="carousel-track">
-      <img src="Dazz.webp" alt="Banner 3" />
-    </div>
-    <div class="carousel-slide" id="carousel-track">
-      <img src="Yoho.jpg" alt="Banner 3" />
-    </div>
+  <div class="nav">
+    <img class="logo" src="LOGO E-TEAM (Transparant + Text).png" alt="E-Team Logo">
+    <div class="menu-item active" onclick="setActive(this)">Home</div>
+    <div class="menu-item" onclick="setActive(this)">Top Up</div>
+    <div class="menu-item" onclick="setActive(this)">Service</div>
+    <div class="menu-item" onclick="setActive(this)">About Us</div>
+    <div class="menu-item" onclick="setActive(this)">Masuk</div>
   </div>
-  <button class="carousel-button prev">&#10094;</button>
-  <button class="carousel-button next">&#10095;</button>
-</div>
 
-  <a href="https://wa.me/6281542050415" class="floating-button" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" style="width: 20px; height: 20px; margin-right: 8px;" />
-    CALL ADMIN
+  <div class="slider-container">
+    <div class="slides" id="slides">
+      <img src="Mico.png" class="slide">
+      <img src="Dazz.webp" class="slide">
+      <img src="Tiktok.jpg" class="slide">
+    </div>
+    <div class="nav-arrow nav-left" onclick="prevSlide()">&#10094;</div>
+    <div class="nav-arrow nav-right" onclick="nextSlide()">&#10095;</div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <a class="call-admin" href="https://wa.me/6281542050415" target="_blank">
+    <i class="fab fa-whatsapp"></i> CALL ADMIN
   </a>
 
-<script>
-  const track = document.querySelector('.carousel-track');
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.querySelector('.carousel-button.prev');
-  const nextBtn = document.querySelector('.carousel-button.next');
+  <script>
+    const menuItems = document.querySelectorAll('.menu-item');
+    function setActive(el) {
+      menuItems.forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+    }
 
-  let currentIndex = 0;
-  const totalSlides = slides.length;
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots');
+    const slidesWrapper = document.getElementById('slides');
+    let currentIndex = 0;
 
-  function updateCarousel() {
-    const offset = -currentIndex * 100;
-    track.style.transform = `translateX(${offset}%)`;
-  }
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
 
-  function showNextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateCarousel();
-  }
+    function updateSlider() {
+      slidesWrapper.style.transition = 'transform 0.5s ease-in-out';
+      slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+      document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+      document.querySelectorAll('.dot')[currentIndex % slides.length].classList.add('active');
+    }
 
-  function showPrevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  }
+    function nextSlide() {
+      currentIndex++;
+      if (currentIndex >= slides.length) {
+        currentIndex = 0;
+      }
+      updateSlider();
+    }
 
-  nextBtn.addEventListener('click', showNextSlide);
-  prevBtn.addEventListener('click', showPrevSlide);
+    function prevSlide() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+      }
+      updateSlider();
+    }
 
-  setInterval(showNextSlide, 3000); // Auto slide tiap 3 detik
-</script>
+    function goToSlide(index) {
+      currentIndex = index;
+      updateSlider();
+    }
 
+    // Looping dengan cloning slide pertama
+    const loopSlides = () => {
+  const clone = slidesWrapper.firstElementChild.cloneNode(true);
+  slidesWrapper.appendChild(clone);
+  currentIndex = 0;
+  
+  setInterval(() => {
+    currentIndex++;
+    slidesWrapper.style.transition = 'transform 0.5s ease-in-out';
+    slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    // Update dots sesuai currentIndex
+    let activeDotIndex = currentIndex % slides.length;
+    document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+    document.querySelectorAll('.dot')[activeDotIndex].classList.add('active');
+
+    if (currentIndex === slides.length) {
+      setTimeout(() => {
+        slidesWrapper.style.transition = 'none';
+        slidesWrapper.style.transform = 'translateX(0)';
+        currentIndex = 0;
+      }, 500);
+    }
+  }, 3000);
+};
+
+    loopSlides();
+  </script>
 </body>
 </html>
