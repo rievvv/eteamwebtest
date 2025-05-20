@@ -15,22 +15,23 @@
     background-color: #feeeca;
   }
 
+  .logo {
+    position: fixed;
+    top: -1.5rem;
+    left: -0.5rem;
+    width: 120px;
+    z-index: 1001; /* PASTIKAN DI ATAS SEMUA ELEMEN LAIN */
+  }
+
   .nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 1rem 2rem;
     position: relative;
-    gap: 1rem; /* ADD SPACE ANTAR MENU */
-    flex-wrap: wrap; /* Agar tidak bertumpuk saat sempit */
-  }
-
-  .logo {
-    position: absolute;
-    left: 0.5rem;
-    top: 0.5rem;
-    width: 120px;
-    z-index: 999; /* Agar tidak tertutup slider */
+    gap: 1rem;
+    flex-wrap: wrap;
+    z-index: 100; /* pastikan di bawah logo */
   }
 
   .menu-item {
@@ -40,24 +41,12 @@
     color: black;
     cursor: pointer;
     border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
   }
 
   .menu-item.active {
-    color: #fec30c;
-  }
-
-  .menu-item.active::after {
-    content: "";
-    position: absolute;
-    bottom: -0.3rem;
-    left: 50%;
-    transform: translateX(-50%);
     background-color: #324d73;
-    width: 150%;
-    height: 10rem;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    z-index: -1;
+    color: #fec30c;
   }
 
   .hamburger {
@@ -67,7 +56,7 @@
     gap: 5px;
     width: 25px;
     height: 20px;
-    z-index: 101;
+    z-index: 1002;
   }
 
   .hamburger div {
@@ -87,7 +76,7 @@
     background-color: #feeeca;
     padding: 2rem 1.5rem;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    z-index: 1000;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
   }
@@ -223,12 +212,19 @@
       bottom: 0.5rem;
       right: 0.5rem;
     }
+
+    .logo {
+      top: 0.5rem;
+      left: 0.5rem;
+      width: 100px;
+    }
   }
 </style>
+
 </head>
 <body>
   <div class="nav">
-    <img class="logo" src="LOGO E-TEAM (Transparant + Text).png" alt="E-Team Logo"/>
+    <img src="LOGO E-TEAM (Transparant + Text).png" alt="Logo" class="logo" />
     <div class="hamburger" id="hamburger">
       <div></div>
       <div></div>
@@ -348,12 +344,11 @@
   el.classList.add('active');
   mobileMenu.classList.remove('open');
 
-  // Bersihkan semua highlight setelah sidebar ditutup
+  // Hapus highlight setelah sidebar tertutup
   setTimeout(() => {
     mobileMenuItems.forEach(item => item.classList.remove('active'));
-  }, 300); // tunggu animasi tutup selesai
+  }, 300);
 }
-
 
     // Tutup menu saat klik di luar
     document.addEventListener('click', function (e) {
