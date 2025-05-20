@@ -237,6 +237,73 @@
     right: 2rem;
   }
   }
+  /* Menu Tambahan Call Admin */
+  .call-admin-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #324d73;
+  color: #fec30c;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  z-index: 10;
+  cursor: pointer;
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+.admin-popup {
+  position: fixed;
+  bottom: 3.5rem;
+  right: 1rem;
+  background-color: #324d73;
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.admin-option {
+  background-color: #fec30c;
+  color: #324d73;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.admin-option:hover {
+  background-color: #ffe57e;
+}
+
+@media (max-width: 768px) {
+  .call-admin-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    bottom: 0.7rem;
+    right: 0.7rem;
+  }
+
+  .admin-popup {
+    bottom: 3.2rem;
+    right: 0.7rem;
+  }
+}
+
 </style>
 
 </head>
@@ -269,15 +336,22 @@
       <img src="Mico.png" class="slide" />
       <img src="Dazz.webp" class="slide" />
       <img src="Tiktok.jpg" class="slide" />
+      <img src="Yoho.jpg" class="slide" />
     </div>
     <div class="nav-arrow nav-left" onclick="prevSlide()">&#10094;</div>
     <div class="nav-arrow nav-right" onclick="nextSlide()">&#10095;</div>
     <div class="dots" id="dots"></div>
   </div>
 
-  <a class="call-admin" href="https://wa.me/6281542050415" target="_blank">
-    <i class="fab fa-whatsapp"></i> CALL ADMIN
-  </a>
+  <div class="call-admin-btn" onclick="toggleAdminPopup()">
+  <i class="fab fa-whatsapp"></i> CALL ADMIN
+</div>
+
+<div class="admin-popup" id="adminPopup">
+  <a href="https://wa.me/6281542050415" class="admin-option" target="_blank">Admin E-Team</a>
+  <a href="https://wa.me/6285777788888" class="admin-option" target="_blank">Admin Elite</a>
+  <a href="https://wa.me/6281222233333" class="admin-option" target="_blank">Admin Top Up</a>
+</div>
 
   <script>
     const menuItems = document.querySelectorAll('.menu-item');
@@ -394,6 +468,19 @@ function setActiveMobile(el) {
         mobileMenu.classList.remove('open');
       }
     });
+    // script pop up call admin
+  function toggleAdminPopup() {
+    const popup = document.getElementById('adminPopup');
+    popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  document.addEventListener('click', function (e) {
+    const popup = document.getElementById('adminPopup');
+    const button = document.querySelector('.call-admin-btn');
+    if (!popup.contains(e.target) && !button.contains(e.target)) {
+      popup.style.display = 'none';
+    }
+  });
   </script>
 </body>
 </html>
