@@ -1,95 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>E-Team - Home</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <style>
-    .hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-  width: 25px;
-  height: 20px;
-  justify-content: center;
-  margin-left: auto; /* ini yang bikin ke kanan */
-  z-index: 101;
-}
-
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 70%;
-  height: 100vh;
-  background-color: #feeeca;
-  padding: 2rem 1.5rem;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.mobile-menu.open {
-  transform: translateX(0);
-}
-
-.mobile-menu .menu-item {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background-color: transparent;
-  border-radius: 8px;
-  color: #324d73;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.mobile-menu .menu-item:hover,
-.mobile-menu .menu-item.active {
-  background-color: #324d73;
-  color: #fec30c;
-}
-
-@media (max-width: 768px) {
-  .nav .menu-item {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .mobile-menu {
-    display: flex;
-  }
-}
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background-color: #feeeca;
     }
+
     .nav {
       display: flex;
       justify-content: flex-end;
-      gap: 2rem;
       align-items: center;
       padding: 1rem 2rem;
       position: relative;
     }
+
     .logo {
       position: absolute;
       left: 0.5rem;
       top: -1.5rem;
       width: 120px;
     }
+
     .menu-item {
       position: relative;
       padding: 0.5rem 0;
@@ -97,9 +37,11 @@
       color: black;
       cursor: pointer;
     }
+
     .menu-item.active {
       color: #fec30c;
     }
+
     .menu-item.active::after {
       content: "";
       position: absolute;
@@ -113,6 +55,59 @@
       border-bottom-right-radius: 12px;
       z-index: -1;
     }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      width: 25px;
+      height: 20px;
+      z-index: 101;
+    }
+
+    .hamburger div {
+      height: 3px;
+      background-color: #324d73;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100vh;
+      background-color: #feeeca;
+      padding: 2rem 1.5rem;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu .menu-item {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: transparent;
+      border-radius: 8px;
+      color: #324d73;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .mobile-menu .menu-item:hover,
+    .mobile-menu .menu-item.active {
+      background-color: #324d73;
+      color: #fec30c;
+    }
+
     .slider-container {
       position: relative;
       width: 100%;
@@ -120,15 +115,18 @@
       background-color: #fec30c;
       overflow: hidden;
     }
+
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
     }
+
     .slide {
       min-width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .nav-arrow {
       position: absolute;
       top: 50%;
@@ -138,12 +136,15 @@
       cursor: pointer;
       z-index: 1;
     }
+
     .nav-left {
       left: 1rem;
     }
+
     .nav-right {
       right: 1rem;
     }
+
     .dots {
       position: absolute;
       bottom: 1rem;
@@ -152,6 +153,7 @@
       display: flex;
       gap: 0.5rem;
     }
+
     .dot {
       width: 10px;
       height: 10px;
@@ -160,10 +162,12 @@
       opacity: 0.5;
       cursor: pointer;
     }
+
     .dot.active {
       background-color: #324d73;
       opacity: 0.9;
     }
+
     .call-admin {
       position: fixed;
       bottom: 1rem;
@@ -179,97 +183,46 @@
       padding: 0.5rem 1rem;
       border-radius: 20px;
     }
-    /* Hide hamburger menu icon by default */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-  width: 25px;
-  height: 20px;
-  margin-left: 1rem;
-}
 
-.hamburger div {
-  height: 3px;
-  background-color: #324d73; /* biru */
-  border-radius: 2px;
-}
-/* Responsive untuk smartphone */
-@media (max-width: 768px) {
-  .nav {
-    justify-content: flex-start;
-    padding: 1rem;
-    position: relative;
-  }
+    @media (max-width: 768px) {
+      .nav .menu-item {
+        display: none;
+      }
 
-  .logo {
-    position: static;
-    width: 100px;
-    margin-right: 1rem;
-  }
+      .hamburger {
+        display: flex;
+        margin-left: auto;
+      }
 
-  /* Sembunyikan menu-item di nav secara default */
-  .menu-item {
-    display: none;
-    width: 100%;
-    padding: 1rem 0;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #324d73; /* default teks biru */
-  }
+      .mobile-menu {
+        display: flex;
+      }
 
-  /* Tampilkan menu-item saat nav aktif (class .nav.active) */
-  .nav.active .menu-item {
-    display: block;
-    background-color: transparent;
-  }
+      .slider-container {
+        height: 250px;
+      }
 
-  /* Hover dan active menu-item style */
-  .menu-item:hover,
-  .menu-item.active {
-    background-color: #324d73; /* biru */
-    color: #fec30c !important; /* kuning */
-  }
+      .nav-arrow {
+        font-size: 1.5rem;
+      }
 
-  /* Tampilkan hamburger icon */
-  .hamburger {
-    display: flex;
-  }
-}
-
-  .slider-container {
-    height: 250px;            /* Slider lebih pendek di HP */
-  }
-  .nav-arrow {
-    font-size: 1.5rem;        /* Tombol panah lebih kecil */
-  }
-  .call-admin {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-    bottom: 0.5rem;
-    right: 0.5rem;
-  }
-
+      .call-admin {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        bottom: 0.5rem;
+        right: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="nav">
-    <img class="logo" src="LOGO E-TEAM (Transparant + Text).png" alt="E-Team Logo">
+    <img class="logo" src="LOGO E-TEAM (Transparant + Text).png" alt="E-Team Logo"/>
     <div class="hamburger" id="hamburger">
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
-<!-- Ini setelah div.nav -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="menu-item" onclick="setActiveMobile(this)">Home</div>
-  <div class="menu-item" onclick="setActiveMobile(this)">Top Up</div>
-  <div class="menu-item" onclick="setActiveMobile(this)">Service</div>
-  <div class="menu-item" onclick="setActiveMobile(this)">About Us</div>
-  <div class="menu-item" onclick="setActiveMobile(this)">Masuk</div>
-</div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div class="menu-item active" onclick="setActive(this)">Home</div>
     <div class="menu-item" onclick="setActive(this)">Top Up</div>
     <div class="menu-item" onclick="setActive(this)">Service</div>
@@ -277,11 +230,20 @@
     <div class="menu-item" onclick="setActive(this)">Masuk</div>
   </div>
 
+  <!-- Sidebar menu PISAH dari .nav -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="menu-item" onclick="setActiveMobile(this)">Home</div>
+    <div class="menu-item" onclick="setActiveMobile(this)">Top Up</div>
+    <div class="menu-item" onclick="setActiveMobile(this)">Service</div>
+    <div class="menu-item" onclick="setActiveMobile(this)">About Us</div>
+    <div class="menu-item" onclick="setActiveMobile(this)">Masuk</div>
+  </div>
+
   <div class="slider-container">
     <div class="slides" id="slides">
-      <img src="Mico.png" class="slide">
-      <img src="Dazz.webp" class="slide">
-      <img src="Tiktok.jpg" class="slide">
+      <img src="Mico.png" class="slide" />
+      <img src="Dazz.webp" class="slide" />
+      <img src="Tiktok.jpg" class="slide" />
     </div>
     <div class="nav-arrow nav-left" onclick="prevSlide()">&#10094;</div>
     <div class="nav-arrow nav-right" onclick="nextSlide()">&#10095;</div>
@@ -321,17 +283,13 @@
 
     function nextSlide() {
       currentIndex++;
-      if (currentIndex >= slides.length) {
-        currentIndex = 0;
-      }
+      if (currentIndex >= slides.length) currentIndex = 0;
       updateSlider();
     }
 
     function prevSlide() {
       currentIndex--;
-      if (currentIndex < 0) {
-        currentIndex = slides.length - 1;
-      }
+      if (currentIndex < 0) currentIndex = slides.length - 1;
       updateSlider();
     }
 
@@ -340,48 +298,52 @@
       updateSlider();
     }
 
-    // Looping dengan cloning slide pertama
     const loopSlides = () => {
-  const clone = slidesWrapper.firstElementChild.cloneNode(true);
-  slidesWrapper.appendChild(clone);
-  currentIndex = 0;
-  
-  setInterval(() => {
-    currentIndex++;
-    slidesWrapper.style.transition = 'transform 0.5s ease-in-out';
-    slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-    
-    // Update dots sesuai currentIndex
-    let activeDotIndex = currentIndex % slides.length;
-    document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-    document.querySelectorAll('.dot')[activeDotIndex].classList.add('active');
+      const clone = slidesWrapper.firstElementChild.cloneNode(true);
+      slidesWrapper.appendChild(clone);
+      currentIndex = 0;
 
-    if (currentIndex === slides.length) {
-      setTimeout(() => {
-        slidesWrapper.style.transition = 'none';
-        slidesWrapper.style.transform = 'translateX(0)';
-        currentIndex = 0;
-      }, 500);
-    }
-  }, 3000);
-};
+      setInterval(() => {
+        currentIndex++;
+        slidesWrapper.style.transition = 'transform 0.5s ease-in-out';
+        slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        let activeDotIndex = currentIndex % slides.length;
+        document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+        document.querySelectorAll('.dot')[activeDotIndex].classList.add('active');
+
+        if (currentIndex === slides.length) {
+          setTimeout(() => {
+            slidesWrapper.style.transition = 'none';
+            slidesWrapper.style.transform = 'translateX(0)';
+            currentIndex = 0;
+          }, 500);
+        }
+      }, 3000);
+    };
 
     loopSlides();
+
     const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileMenuItems = mobileMenu.querySelectorAll('.menu-item');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuItems = mobileMenu.querySelectorAll('.menu-item');
 
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
 
-// Fungsi untuk aktifkan menu mobile
-function setActiveMobile(el) {
-  mobileMenuItems.forEach(item => item.classList.remove('active'));
-  el.classList.add('active');
-  mobileMenu.classList.remove('open');
-}
+    function setActiveMobile(el) {
+      mobileMenuItems.forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Tutup menu saat klik di luar
+    document.addEventListener('click', function (e) {
+      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+      }
+    });
   </script>
-  
 </body>
 </html>
