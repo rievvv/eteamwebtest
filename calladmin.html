@@ -99,6 +99,19 @@
   animation: bounceUp 0.4s ease;
   background-color: rgba(50, 77, 115, 0.45); /* #324d73 dengan opacity 45% */
 }
+@keyframes softBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.call-admin-btn {
+  /* ...style sebelumnya tetap */
+  animation: softBounce 1.5s ease-in-out infinite;
+}
     
   </style>
 </head>
