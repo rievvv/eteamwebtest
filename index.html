@@ -214,10 +214,28 @@
     }
 
     .logo {
-      top: 0.5rem;
-      left: 0.5rem;
-      width: 100px;
-    }
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 90px;
+    z-index: 1002;
+  }
+  .slider-container {
+    margin-top: 70px; /* Tambah jarak dari atas agar tidak tertutup logo & hamburger */
+    height: 250px;
+  }
+
+  .nav {
+    padding: 1rem;
+    position: relative;
+    align-items: center;
+  }
+
+  .hamburger {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
   }
 </style>
 
