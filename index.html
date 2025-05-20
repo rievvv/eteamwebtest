@@ -9,6 +9,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* Sidebar menu mobile */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -70%;
+  width: 70%;
+  height: 100%;
+  background-color: #feeeca;
+  padding: 2rem 1.5rem;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  transition: right 0.3s ease;
+}
+
+.mobile-menu .menu-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  color: #324d73;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mobile-menu .menu-item:hover,
+.mobile-menu .menu-item.active {
+  background-color: #324d73;
+  color: #fec30c;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .nav .menu-item {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    z-index: 100;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+}
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -195,8 +245,22 @@
 </head>
 <body>
   <div class="nav">
+    <!-- Ini setelah div.nav -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-item" onclick="setActiveMobile(this)">Home</div>
+  <div class="menu-item" onclick="setActiveMobile(this)">Top Up</div>
+  <div class="menu-item" onclick="setActiveMobile(this)">Service</div>
+  <div class="menu-item" onclick="setActiveMobile(this)">About Us</div>
+  <div class="menu-item" onclick="setActiveMobile(this)">Masuk</div>
+</div>
+
     <img class="logo" src="LOGO E-TEAM (Transparant + Text).png" alt="E-Team Logo">
     <div class="hamburger" id="hamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
     <div class="menu-item active" onclick="setActive(this)">Home</div>
     <div class="menu-item" onclick="setActive(this)">Top Up</div>
     <div class="menu-item" onclick="setActive(this)">Service</div>
@@ -294,26 +358,21 @@
 };
 
     loopSlides();
-  </script>
-  <script>
     const hamburger = document.getElementById('hamburger');
-const nav = document.querySelector('.nav');
-const menuItems = document.querySelectorAll('.menu-item');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuItems = mobileMenu.querySelectorAll('.menu-item');
 
 hamburger.addEventListener('click', () => {
-  nav.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
 });
 
-// Supaya saat klik menu-item di mobile, menu otomatis tutup dan aktifkan highlight
-menuItems.forEach(item => {
-  item.addEventListener('click', () => {
-    menuItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-    if(window.innerWidth <= 768) {
-      nav.classList.remove('active'); // tutup menu setelah klik di mobile
-    }
-  });
-});
+// Fungsi untuk aktifkan menu mobile
+function setActiveMobile(el) {
+  mobileMenuItems.forEach(item => item.classList.remove('active'));
+  el.classList.add('active');
+  mobileMenu.classList.remove('open');
+}
   </script>
+  
 </body>
 </html>
