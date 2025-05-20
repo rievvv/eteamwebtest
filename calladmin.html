@@ -12,6 +12,30 @@
       background-color: #feeeca;
     }
 
+    /* Animasi bounce untuk tombol */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Animasi fade & bounce untuk popup */
+    @keyframes popupBounce {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-10px);
+      }
+      80% {
+        transform: translateY(5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
     .call-admin-btn {
       position: fixed;
       bottom: 1rem;
@@ -28,19 +52,15 @@
       border-radius: 20px;
       z-index: 10;
       cursor: pointer;
-      animation: bounce 1s infinite alternate;
-    }
-
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-5px); }
+      animation: bounce 1.5s infinite ease-in-out;
+      user-select: none;
     }
 
     .admin-popup {
       position: fixed;
       bottom: 3.5rem;
       right: 1rem;
-      background-color: #324d73;
+      background-color: rgba(50, 77, 115, 0.85);
       border-radius: 12px;
       padding: 0.5rem;
       display: none;
@@ -48,6 +68,14 @@
       gap: 0.5rem;
       z-index: 9;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+    }
+
+    .admin-popup.show {
+      display: flex;
+      animation: popupBounce 0.5s forwards;
+      opacity: 1;
     }
 
     .admin-option {
@@ -58,6 +86,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: background-color 0.3s;
+      user-select: none;
     }
 
     .admin-option:hover {
@@ -77,42 +106,6 @@
         right: 0.7rem;
       }
     }
-    @keyframes bounceUp {
-  0% {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  60% {
-    transform: translateY(-10px);
-    opacity: 1;
-  }
-  80% {
-    transform: translateY(5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.admin-popup.show {
-  display: flex !important;
-  animation: bounceUp 0.4s ease;
-  background-color: rgba(50, 77, 115, 0.45); /* #324d73 dengan opacity 45% */
-}
-@keyframes softBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.call-admin-btn {
-  /* ...style sebelumnya tetap */
-  animation: softBounce 1.5s ease-in-out infinite;
-}
-    
   </style>
 </head>
 <body>
@@ -122,33 +115,25 @@
   </div>
 
   <div class="admin-popup" id="adminPopup">
-    <a href="https://wa.me/6281111111111" class="admin-option" target="_blank">Admin E-Team</a>
-    <a href="https://wa.me/6282222222222" class="admin-option" target="_blank">Admin Elite</a>
-    <a href="https://wa.me/6283333333333" class="admin-option" target="_blank">Admin Top Up</a>
+    <a href="https://wa.me/6281111111111" class="admin-option" target="_blank" rel="noopener noreferrer">Admin E-Team</a>
+    <a href="https://wa.me/6282222222222" class="admin-option" target="_blank" rel="noopener noreferrer">Admin Elite</a>
+    <a href="https://wa.me/6283333333333" class="admin-option" target="_blank" rel="noopener noreferrer">Admin Top Up</a>
   </div>
 
   <script>
-  function toggleAdminPopup() {
-    const popup = document.getElementById('adminPopup');
-    if (popup.classList.contains('show')) {
-      popup.classList.remove('show');
-      setTimeout(() => popup.style.display = 'none', 300);
-    } else {
-      popup.style.display = 'flex';
-      setTimeout(() => popup.classList.add('show'), 10);
+    function toggleAdminPopup() {
+      const popup = document.getElementById('adminPopup');
+      popup.classList.toggle('show');
     }
-  }
 
-  // Tutup popup kalau klik di luar
-  document.addEventListener('click', function (e) {
-    const popup = document.getElementById('adminPopup');
-    const button = document.querySelector('.call-admin-btn');
-    if (!popup.contains(e.target) && !button.contains(e.target)) {
-      popup.classList.remove('show');
-      setTimeout(() => popup.style.display = 'none', 300);
-    }
-  });
-</script>
-
+    // Tutup popup kalau klik di luar
+    document.addEventListener('click', function (e) {
+      const popup = document.getElementById('adminPopup');
+      const button = document.querySelector('.call-admin-btn');
+      if (!popup.contains(e.target) && !button.contains(e.target)) {
+        popup.classList.remove('show');
+      }
+    });
+  </script>
 </body>
 </html>
