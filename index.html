@@ -386,7 +386,7 @@
     <div class="dots" id="dots"></div>
   </div>
 
-  <a class="call-admin" id="callAdminBtn">
+  <a class="call-admin call-admin-btn" id="callAdminBtn">
   <i class="fab fa-whatsapp"></i> CALL ADMIN
 </a>
 
@@ -529,13 +529,15 @@ function setActiveMobile(el) {
   const callAdminBtn = document.getElementById('callAdminBtn');
   const adminPopup = document.getElementById('adminPopup');
 
-  callAdminBtn.addEventListener('click', () => {
+  callAdminBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // agar klik tidak ditangkap oleh event global
     adminPopup.classList.toggle('show');
-    callAdminBtn.classList.add('bounce');
+  });
 
-    setTimeout(() => {
-      callAdminBtn.classList.remove('bounce');
-    }, 500);
+  document.addEventListener('click', function (e) {
+    if (!adminPopup.contains(e.target) && !callAdminBtn.contains(e.target)) {
+      adminPopup.classList.remove('show');
+    }
   });
 </script>
 
