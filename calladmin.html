@@ -77,6 +77,28 @@
         right: 0.7rem;
       }
     }
+    @keyframes bounceUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.admin-popup.show {
+  display: flex !important;
+  animation: bounceUp 0.4s ease;
+  background-color: rgba(50, 77, 115, 0.45); /* #324d73 dengan opacity 45% */
+}
     
   </style>
 </head>
@@ -93,19 +115,27 @@
   </div>
 
   <script>
-    function toggleAdminPopup() {
-      const popup = document.getElementById('adminPopup');
-      popup.style.display = (popup.style.display === 'flex') ? 'none' : 'flex';
+  function toggleAdminPopup() {
+    const popup = document.getElementById('adminPopup');
+    if (popup.classList.contains('show')) {
+      popup.classList.remove('show');
+      setTimeout(() => popup.style.display = 'none', 300);
+    } else {
+      popup.style.display = 'flex';
+      setTimeout(() => popup.classList.add('show'), 10);
     }
+  }
 
-    // Tutup popup kalau klik di luar
-    document.addEventListener('click', function (e) {
-      const popup = document.getElementById('adminPopup');
-      const button = document.querySelector('.call-admin-btn');
-      if (!popup.contains(e.target) && !button.contains(e.target)) {
-        popup.style.display = 'none';
-      }
-    });
-  </script>
+  // Tutup popup kalau klik di luar
+  document.addEventListener('click', function (e) {
+    const popup = document.getElementById('adminPopup');
+    const button = document.querySelector('.call-admin-btn');
+    if (!popup.contains(e.target) && !button.contains(e.target)) {
+      popup.classList.remove('show');
+      setTimeout(() => popup.style.display = 'none', 300);
+    }
+  });
+</script>
+
 </body>
 </html>

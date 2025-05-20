@@ -303,6 +303,49 @@
     right: 0.7rem;
   }
 }
+.call-admin-popup {
+  position: fixed;
+  bottom: 4rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1001;
+}
+
+.call-admin-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.call-admin-option {
+  background-color: rgba(50, 77, 115, 1); /* biru dengan opacity 45% */
+  color: #fec30c;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeInUp 0.3s ease;
+}
+
+.call-admin-option:hover {
+  background-color: rgba(50, 77, 115, 0.7);
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 </style>
 
@@ -343,14 +386,14 @@
     <div class="dots" id="dots"></div>
   </div>
 
-  <div class="call-admin-btn" onclick="toggleAdminPopup()">
+  <a class="call-admin" id="callAdminBtn">
   <i class="fab fa-whatsapp"></i> CALL ADMIN
-</div>
+</a>
 
-<div class="admin-popup" id="adminPopup">
-  <a href="https://wa.me/6281542050415" class="admin-option" target="_blank">Admin E-Team</a>
-  <a href="https://wa.me/6285777788888" class="admin-option" target="_blank">Admin Elite</a>
-  <a href="https://wa.me/6281222233333" class="admin-option" target="_blank">Admin Top Up</a>
+<div class="call-admin-popup" id="adminPopup">
+  <a href="https://wa.me/6281234567890" target="_blank" class="call-admin-option">Admin E-Team</a>
+  <a href="https://wa.me/6282345678901" target="_blank" class="call-admin-option">Admin Elite</a>
+  <a href="https://wa.me/6283456789012" target="_blank" class="call-admin-option">Admin Top Up</a>
 </div>
 
   <script>
@@ -482,5 +525,30 @@ function setActiveMobile(el) {
     }
   });
   </script>
+  <script>
+  const callAdminBtn = document.getElementById('callAdminBtn');
+  const adminPopup = document.getElementById('adminPopup');
+
+  callAdminBtn.addEventListener('click', () => {
+    adminPopup.classList.toggle('show');
+    callAdminBtn.classList.add('bounce');
+
+    setTimeout(() => {
+      callAdminBtn.classList.remove('bounce');
+    }, 500);
+  });
+</script>
+
+<style>
+  @keyframes bounceAnim {
+    0%, 100% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+  }
+
+  .bounce {
+    animation: bounceAnim 0.5s;
+  }
+</style>
+
 </body>
 </html>
