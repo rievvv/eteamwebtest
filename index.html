@@ -354,19 +354,39 @@
     const mobileMenuItems = mobileMenu.querySelectorAll('.menu-item');
 
     hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
+  mobileMenu.classList.toggle('open');
 
-    function setActiveMobile(el) {
-  mobileMenuItems.forEach(item => item.classList.remove('active'));
-  el.classList.add('active');
+  if (mobileMenu.classList.contains('open')) {
+    // Update highlight menu aktif
+    mobileMenuItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.textContent.trim() === activeMenuName) {
+        item.classList.add('active');
+      }
+    });
+  }
+});
+    let activeMenuName = 'Home'; // Default aktif
+
+function setActiveMobile(el) {
+  const selectedName = el.textContent.trim();
+  activeMenuName = selectedName;
+
+  mobileMenuItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.textContent.trim() === activeMenuName) {
+      item.classList.add('active');
+    }
+  });
+
   mobileMenu.classList.remove('open');
+}
 
   // Hapus highlight setelah sidebar tertutup
   setTimeout(() => {
     mobileMenuItems.forEach(item => item.classList.remove('active'));
   }, 300);
-}
+
 
     // Tutup menu saat klik di luar
     document.addEventListener('click', function (e) {
