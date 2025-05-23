@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Team - Top Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #feeeca;
+  }
+
+  .logo {
+    position: fixed;
+    top: -1.5rem;
+    left: -0.5rem;
+    width: 120px;
+    z-index: 1001;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 1.5rem 2rem;
+    position: relative;
+    gap: 1rem;
+    flex-wrap: wrap;
+    z-index: 100;
+  }
+
+  .menu-item {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .menu-item:hover {
+    background-color: rgba(50, 77, 115, 0.8);
+    color: rgba(254, 195, 12, 0.8);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .menu-item.active {
+    background-color: #324d73;
+    color: #fec30c;
+  }
+
+    .call-admin {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background-color: #324d73;
+      color: #fec30c;
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      z-index: 5;
+      transition: all 0.2s ease;
+    }
+
+    .call-admin:hover {
+      background-color: rgba(50, 77, 115, 0.8);
+      color: #fec30c;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .call-admin-popup {
+      position: fixed;
+      bottom: 4rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1001;
+    }
+
+    .call-admin-popup.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .call-admin-option {
+      background-color: rgba(50, 77, 115, 1);
+      color: #fec30c;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .call-admin-option:hover {
+      background-color: rgba(50, 77, 115, 0.7);
+    }
+
+    .spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #ffcc00 0%, #ff4500 100%);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 1;
+      animation: sparkAnim 0.6s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes sparkAnim {
+      0% {
+        transform: scale(1) translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.3) translate(var(--x), var(--y)) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    .app-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .app-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <div class="nav">
+    <img src="LOGO E-TEAM (Transparant + Text).png" alt="Logo" class="logo" />
+    <div class="menu-item" onclick="location.href='index.html'">Home</div>
+    <div class="menu-item active">Top Up</div>
+    <div class="menu-item" onclick="location.href='service.html'">Service</div>
+    <div class="menu-item" onclick="location.href='about.html'">About Us</div>
+    <div class="menu-item" onclick="location.href='login.html'">Masuk</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <section style="padding: 2rem; text-align: center;">
+    <h1 style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem;">ELITE TOP UP</h1>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+      <div>
+        <img src="Mico.png" alt="MICO" class="app-hover" style="width: 120px; border-radius: 20px;" />
+        <p style="margin-top: 0.5rem; font-weight: 600;">MICO</p>
+      </div>
+      <div>
+        <img src="Dazz.webp" alt="DAZZ" class="app-hover" style="width: 120px; border-radius: 20px;" />
+        <p style="margin-top: 0.5rem; font-weight: 600;">DAZZ</p>
+      </div>
+      <div>
+        <img src="Moma.jpg" alt="MOMA" class="app-hover" style="width: 120px; border-radius: 20px;" />
+        <p style="margin-top: 0.5rem; font-weight: 600;">MOMA</p>
+      </div>
+      <div>
+        <img src="TEMAN LIVE.webp" alt="TEMAN LIVE" class="app-hover" style="width: 120px; border-radius: 20px;" />
+        <p style="margin-top: 0.5rem; font-weight: 600;">TEMAN LIVE</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL ADMIN -->
+  <a class="call-admin call-admin-btn" id="callAdminBtn">
+    <i class="fab fa-whatsapp"></i> CALL ADMIN
+  </a>
+
+  <div class="call-admin-popup" id="adminPopup">
+    <a href="https://wa.me/6281234567890" target="_blank" class="call-admin-option">Admin E-Team</a>
+    <a href="https://wa.me/6282345678901" target="_blank" class="call-admin-option">Admin Elite</a>
+    <a href="https://wa.me/6283456789012" target="_blank" class="call-admin-option">Admin Top Up</a>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const callAdminBtn = document.getElementById('callAdminBtn');
+    const adminPopup = document.getElementById('adminPopup');
+
+    callAdminBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      adminPopup.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!adminPopup.contains(e.target) && !callAdminBtn.contains(e.target)) {
+        adminPopup.classList.remove('show');
+      }
+    });
+
+    // Spark Animation
+    document.addEventListener('mousemove', function (e) {
+      for (let i = 0; i < 5; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 20 + 5;
+        const x = Math.cos(angle) * distance + 'px';
+        const y = Math.sin(angle) * distance + 'px';
+        spark.style.setProperty('--x', x);
+        spark.style.setProperty('--y', y);
+
+        spark.style.left = e.pageX + 'px';
+        spark.style.top = e.pageY + 'px';
+
+        document.body.appendChild(spark);
+
+        setTimeout(() => {
+          spark.remove();
+        }, 600);
+      }
+    });
+  </script>
+</body>
+</html>

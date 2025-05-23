@@ -15,23 +15,24 @@
     background-color: #feeeca;
   }
 
-  .logo {
+.logo {
     position: fixed;
     top: -1.5rem;
     left: -0.5rem;
     width: 120px;
-    z-index: 1001; /* PASTIKAN DI ATAS SEMUA ELEMEN LAIN */
+    z-index: 1001;
   }
 
-  .nav {
+.nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
+    background-color: #f7f7f7;
+    padding: 1.5rem 2rem;
     position: relative;
     gap: 1rem;
     flex-wrap: wrap;
-    z-index: 100; /* pastikan di bawah logo */
+    z-index: 100;
   }
 
   .menu-item {
@@ -40,13 +41,30 @@
     font-weight: 600;
     color: black;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .menu-item:hover {
+    background-color: rgba(50, 77, 115, 0.8);
+    color: rgba(254, 195, 12, 0.8);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 
   .menu-item.active {
     background-color: #324d73;
     color: #fec30c;
+  }
+
+  .app-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .app-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   }
 
   .hamburger {
@@ -346,28 +364,95 @@
     opacity: 1;
   }
 }
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffcc00 0%, #ff4500 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  animation: sparkAnim 0.6s ease-out forwards;
+  z-index: 9999;
+}
 
+@keyframes sparkAnim {
+  0% {
+    transform: scale(1) translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translate(var(--x), var(--y)) rotate(720deg);
+    opacity: 0;
+  }
+}
+.menu-item,
+.call-admin {
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover,
+.call-admin:hover {
+  background-color: rgba(50, 77, 115, 0.8); /* Biru dengan opacity 80% */
+  color: #fec30c; /* Kuning */
+  transform: translateY(-3px) scale(1.03); /* Efek timbul */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan timbul */
+}
+ #loadingOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  #loadingOverlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .loading-spinner img {
+    width: 100px;
+    animation: spin 1.5s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 </style>
 
 </head>
 <body>
-  <div class="nav">
-    <img src="LOGO E-TEAM (Transparant + Text).png" alt="Logo" class="logo" />
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="menu-item active" onclick="setActive(this)">Home</div>
-    <div class="menu-item" onclick="setActive(this)">Top Up</div>
-    <div class="menu-item" onclick="setActive(this)">Service</div>
-    <div class="menu-item" onclick="setActive(this)">About Us</div>
-    <div class="menu-item" onclick="setActive(this)">Masuk</div>
+  <div id="loadingOverlay">
+  <div class="loading-spinner">
+    <img src="LOGO E-TEAM (Transparant + Text).png" alt="Loading...">
   </div>
+</div>
+  <div class="nav">
+  <img src="LOGO E-TEAM (Transparant + Text).png" alt="Logo" class="logo" />
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="menu-item active">Home</div>
+  <a href="topup.html" class="menu-item">Top Up</a>
+  <a href="service.html" class="menu-item">Service</a>
+  <a href="about.html" class="menu-item">About Us</a>
+<a href="login.html" class="menu-item">Masuk</a>
+
+</div>
 
   <!-- Sidebar menu PISAH dari .nav -->
   <div class="mobile-menu" id="mobileMenu">
-    <div class="menu-item" onclick="setActiveMobile(this)">Home</div>
+    <a href="topup.html" class="menu-item">Home</a>
     <div class="menu-item" onclick="setActiveMobile(this)">Top Up</div>
     <div class="menu-item" onclick="setActiveMobile(this)">Service</div>
     <div class="menu-item" onclick="setActiveMobile(this)">About Us</div>
@@ -551,6 +636,34 @@ function setActiveMobile(el) {
     animation: bounceAnim 0.5s;
   }
 </style>
+<script>
+  document.addEventListener('mousemove', function (e) {
+    for (let i = 0; i < 5; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+
+      // Random movement
+      const angle = Math.random() * 2 * Math.PI;
+      const distance = Math.random() * 20 + 5;
+      const x = Math.cos(angle) * distance + 'px';
+      const y = Math.sin(angle) * distance + 'px';
+      spark.style.setProperty('--x', x);
+      spark.style.setProperty('--y', y);
+
+      // Posisi awal
+      spark.style.left = e.pageX + 'px';
+      spark.style.top = e.pageY + 'px';
+
+      // Tambah ke halaman
+      document.body.appendChild(spark);
+
+      // Hapus setelah animasi selesai
+      setTimeout(() => {
+        spark.remove();
+      }, 600);
+    }
+  });
+</script>
 
 </body>
 </html>
